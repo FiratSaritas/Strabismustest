@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Page with Crosses and Custom Cursor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            cursor: none; /* Hide default cursor */
+            position: relative;
+        }
+        .cross {
+            position: absolute;
+            width: 100px; /* Increased width for longer cross */
+            height: 100px; /* Increased height for longer cross */
+            z-index: 10; /* Ensure crosses are above the cursor dot */
+        }
+        .cross:before, .cross:after {
+            content: '';
+            position: absolute;
+            background-color: var(--cross-color, #ff0000);
+        }
+        .cross:before {
+            width: calc(100% + 20px); /* Increased width with spacing */
+            height: 2px;
+            top: 50%;
+            left: -10px; /* Adjusted left position */
+            transform: translateY(-50%);
+        }
+        .cross:after {
+            height: calc(100% + 20px); /* Increased height with spacing */
+            width: 2px;
+            top: -10px; /* Adjusted top position */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .upper-left {
+            top: 20%;
+            left: 20%;
+        }
+        .upper-center {
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .upper-right {
+            top: 20%;
+            right: 20%;
+        }
+        .lower-left {
+            bottom: 20%;
+            left: 20%;
+        }
+        .lower-center {
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .lower-right {
+            bottom: 20%;
+            right: 20%;
+        }
+        .cursor-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #00FFFF;
+            border-radius: 50%;
+            pointer-events: none; /* Ensure dot doesn't capture mouse events */
+            transform: translate(-50%, -50%); /* Center the dot on the cursor */
+            z-index: 5; /* Ensure cursor dot is below the crosses */
+        }
+        .reset-button, .open-popup-button, .open-info-button {
+            position: absolute;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 15; /* Ensure buttons are above other elements */
+        }
+        .reset-button:hover, .open-popup-button:hover, .open-info-button:hover {
+            background-color: #0056b3;
+        }
+        .reset-button {
+            top: 10px;
+            left: 10px;
+        }
+        .open-popup-button {
+            top: 10px;
+            right: 110px; /* Adjust the position if needed */
+        }
+        .open-info-button {
+            top: 10px;
+            right: 10px;
+        }
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(240, 240, 240, 0.9); /* Bright background with transparency */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            text-align: center;
+            z-index: 1000;
+            cursor: default; /* Show default cursor during popup */
+        }
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .color-input {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .color-input label {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .color-input input {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        .color-input input::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        .color-input input::-webkit-color-swatch {
+            border: none;
+        }
+        .color-input input::-moz-color-swatch {
+            border: none;
+        }
+        .close-popup-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .close-popup-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <p>The page is for hitting the red crosses with the cyan point. Have Fun.</p>
+            <div class="color-input">
+                <label for="cross-color">Cross Color: </label>
+                <input type="color" id="cross-color" name="cross-color" value="#ff0000">
+            </div>
+            <div class="color-input">
+                <label for="dot-color">Dot Color: </label>
+                <input type="color" id="dot-color" name="dot-color" value="#00FFFF">
+            </div>
+            <button class="close-popup-button" id="close-popup-button">Start</button>
+        </div>
+    </div>
+
+    <div class="popup" id="info-popup" style="display:none;">
+        <div class="popup-content">
+            <p>When you have not hit the Crosses, no big deal, can happen.</p>
+            <button class="close-popup-button" id="close-info-popup-button">Close</button>
+        </div>
+    </div>
+
+    <button class="reset-button" id="reset-button">Reset</button>
+    <button class="open-popup-button" id="open-popup-button">Open Settings</button>
+    <button class="open-info-button" id="open-info-button">Info</button>
+    <div class="cross upper-left"></div>
+    <div class="cross upper-center"></div>
+    <div class="cross upper-right"></div>
+    <div class="cross lower-left"></div>
+    <div class="cross lower-center"></div>
+    <div class="cross lower-right"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+
+    <script>
+        let allowDotPlacement = true;
+
+        function moveCursorDot(e) {
+            const cursorDot = document.getElementById('cursor-dot');
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        }
+
+        function placeGreenDot(e) {
+            if (document.getElementById('popup').style.display === 'none' && allowDotPlacement) {
+                const newDot = document.createElement('div');
+                newDot.style.position = 'absolute';
+                newDot.style.width = '10px';
+                newDot.style.height = '10px';
+                newDot.style.backgroundColor = document.getElementById('dot-color').value;
+                newDot.style.borderRadius = '50%';
+                newDot.style.left = e.clientX + 'px';
+                newDot.style.top = e.clientY + 'px';
+                newDot.style.transform = 'translate(-50%, -50%)';
+                newDot.style.zIndex = '5'; /* Ensure new dots are below the crosses */
+                document.body.appendChild(newDot);
+            }
+        }
+
+        function updateCrossColors() {
+            const crossColor = document.getElementById('cross-color').value;
+            const styleElement = document.createElement('style');
+            styleElement.innerHTML = `
+                .cross:before, .cross:after {
+                    background-color: ${crossColor};
+                }
+            `;
+            document.head.appendChild(styleElement);
+        }
+
+        document.addEventListener('mousemove', moveCursorDot);
+        document.addEventListener('click', placeGreenDot);
+
+        document.getElementById('reset-button').addEventListener('click', function() {
+            const dots = document.querySelectorAll('body > div:not(.cross):not(#cursor-dot):not(.popup)');
+            dots.forEach(dot => dot.remove());
+        });
+
+        document.getElementById('close-popup-button').addEventListener('click', function() {
+            allowDotPlacement = false;
+            document.getElementById('popup').style.display = 'none';
+            updateCrossColors();
+            document.getElementById('cursor-dot').style.backgroundColor = document.getElementById('dot-color').value;
+            document.getElementById('reset-button').click();
+            document.body.style.cursor = 'none'; // Hide cursor after closing popup
+            setTimeout(() => {
+                allowDotPlacement = true;
+            }, 100);
+        });
+
+        document.getElementById('open-popup-button').addEventListener('click', function() {
+            allowDotPlacement = false;
+            document.getElementById('popup').style.display = 'flex';
+            document.body.style.cursor = 'default'; // Show cursor when popup is open
+        });
+
+        document.getElementById('open-info-button').addEventListener('click', function() {
+            allowDotPlacement = false;
+            document.getElementById('info-popup').style.display = 'flex';
+            document.body.style.cursor = 'default'; // Show cursor when popup is open
+        });
+
+        document.getElementById('close-info-popup-button').addEventListener('click', function() {
+            allowDotPlacement = true;
+            document.getElementById('info-popup').style.display = 'none';
+            document.body.style.cursor = 'none'; // Hide cursor after closing popup
+        });
+    </script>
+</body>
+</html>
