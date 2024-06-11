@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Page with Crosses and Custom Cursor</title>
+    <title>Strabismus Testing Page</title>
     <style>
         body {
             margin: 0;
@@ -15,6 +15,7 @@
             background-color: #ffffff;
             cursor: none; /* Hide default cursor */
             position: relative;
+            font-family: Arial, sans-serif; /* Modern, easy-to-read font */
         }
         .cross {
             position: absolute;
@@ -116,6 +117,7 @@
             text-align: center;
             z-index: 1000;
             cursor: default; /* Show default cursor during popup */
+            font-family: Arial, sans-serif; /* Modern, easy-to-read font */
         }
         .popup-content {
             background-color: white;
@@ -165,27 +167,46 @@
         .close-popup-button:hover {
             background-color: #0056b3;
         }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .instruction {
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .glasses-image {
+            margin-top: 10px;
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
     <div class="popup" id="popup">
         <div class="popup-content">
-            <p>The page is for hitting the red crosses with the cyan point. Have Fun.</p>
+            <div class="title">Strabismus Testing</div>
+            <p>This webpage is designed to test for Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses.</p>
+            <img src="path/to/your/3d-glasses-image.jpg" alt="3D Glasses" class="glasses-image">
+            <p>Adjust the colors below. Close the right eye to adjust the color for the left eye, and close the left eye to adjust the color for the right eye. If you can't see the adjusted color, keep adjusting until you can.</p>
             <div class="color-input">
-                <label for="cross-color">Cross Color: </label>
-                <input type="color" id="cross-color" name="cross-color" value="#ff0000">
+                <label for="left-eye-color">Left Eye Color: </label>
+                <input type="color" id="left-eye-color" name="left-eye-color" value="#ff0000">
             </div>
             <div class="color-input">
-                <label for="dot-color">Dot Color: </label>
-                <input type="color" id="dot-color" name="dot-color" value="#00FFFF">
+                <label for="right-eye-color">Right Eye Color: </label>
+                <input type="color" id="right-eye-color" name="right-eye-color" value="#00FFFF">
             </div>
+            <p class="instruction">After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results.</p>
             <button class="close-popup-button" id="close-popup-button">Start</button>
         </div>
     </div>
 
     <div class="popup" id="info-popup" style="display:none;">
         <div class="popup-content">
-            <p>When you have not hit the Crosses, no big deal, can happen.</p>
+            <p>If you didn't hit the crosses, don't worry. Try again.</p>
             <button class="close-popup-button" id="close-info-popup-button">Close</button>
         </div>
     </div>
@@ -216,7 +237,7 @@
                 newDot.style.position = 'absolute';
                 newDot.style.width = '10px';
                 newDot.style.height = '10px';
-                newDot.style.backgroundColor = document.getElementById('dot-color').value;
+                newDot.style.backgroundColor = document.getElementById('right-eye-color').value;
                 newDot.style.borderRadius = '50%';
                 newDot.style.left = e.clientX + 'px';
                 newDot.style.top = e.clientY + 'px';
@@ -227,11 +248,11 @@
         }
 
         function updateCrossColors() {
-            const crossColor = document.getElementById('cross-color').value;
+            const leftEyeColor = document.getElementById('left-eye-color').value;
             const styleElement = document.createElement('style');
             styleElement.innerHTML = `
                 .cross:before, .cross:after {
-                    background-color: ${crossColor};
+                    background-color: ${leftEyeColor};
                 }
             `;
             document.head.appendChild(styleElement);
@@ -249,7 +270,7 @@
             allowDotPlacement = false;
             document.getElementById('popup').style.display = 'none';
             updateCrossColors();
-            document.getElementById('cursor-dot').style.backgroundColor = document.getElementById('dot-color').value;
+            document.getElementById('cursor-dot').style.backgroundColor = document.getElementById('right-eye-color').value;
             document.getElementById('reset-button').click();
             document.body.style.cursor = 'none'; // Hide cursor after closing popup
             setTimeout(() => {
