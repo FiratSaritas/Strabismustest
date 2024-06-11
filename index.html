@@ -16,12 +16,14 @@
             cursor: none; /* Hide default cursor */
             position: relative;
             font-family: Arial, sans-serif; /* Modern, easy-to-read font */
+            overflow: hidden; /* This will hide any content that extends beyond the viewport */
         }
         .cross {
             position: absolute;
             width: 100px; /* Increased width for longer cross */
             height: 100px; /* Increased height for longer cross */
             z-index: 10; /* Ensure crosses are above the cursor dot */
+            margin: 20px; /* Increase the margin to create more space between crosses */
         }
         .cross:before, .cross:after {
             content: '';
@@ -120,11 +122,21 @@
             font-family: Arial, sans-serif; /* Modern, easy-to-read font */
         }
         .popup-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             background-color: white;
-            padding: 20px;
+            padding: 50px;
             border-radius: 10px;
-            width: 300px;
+            width: 600px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .color-input-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
         }
         .color-input {
             margin-top: 10px;
@@ -179,41 +191,103 @@
         }
         .glasses-image {
             margin-top: 10px;
-            max-width: 100%;
+            max-width: 50%;
             height: auto;
         }
+        .language-buttons {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .language-buttons button {
+            padding: 5px 10px;
+            margin-left: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .language-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .maintaining-eye-health {
+            text-align: left; /* Align text to the left */
+            margin: 10px 0; /* Add some margin for spacing */
+        }
+
     </style>
 </head>
 <body>
     <div class="popup" id="popup">
         <div class="popup-content">
-            <div class="title">Strabismus Testing</div>
-            <p>This webpage is designed to test for Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses.</p>
-            <img src="path/to/your/3d-glasses-image.jpg" alt="3D Glasses" class="glasses-image">
-            <p>Adjust the colors below. Close the right eye to adjust the color for the left eye, and close the left eye to adjust the color for the right eye. If you can't see the adjusted color, keep adjusting until you can.</p>
-            <div class="color-input">
-                <label for="left-eye-color">Left Eye Color: </label>
-                <input type="color" id="left-eye-color" name="left-eye-color" value="#ff0000">
+            <div class="language-buttons">
+                <button id="en-button">English</button>
+                <button id="de-button">Deutsch</button>
             </div>
-            <div class="color-input">
-                <label for="right-eye-color">Right Eye Color: </label>
-                <input type="color" id="right-eye-color" name="right-eye-color" value="#00FFFF">
+            <div class="title" data-en="Strabismus Testing" data-de="Strabismus-Test">Strabismus Testing</div>
+            <p data-en="This webpage is designed to test for Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses."
+               data-de="Diese Webseite ist für den Strabismus-Test entwickelt. Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. 3D-Brille.">
+               This webpage is designed to test for Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses.</p>
+            <img src="glasses_image.png" alt="3D Glasses" class="glasses-image">
+            <p data-en="Adjust the colors below when you have other colors on your glasses. Close the right eye to adjust the color for the left eye, and close the left eye to adjust the color for the right eye. Keep adjusting until you can't see the color."
+               data-de="Passen Sie die Farben unten an wenn Sie andere Farben als Brille haben. Schließen Sie das rechte Auge, um die Farbe für das linke Auge einzustellen, und schließen Sie das linke Auge, um die Farbe für das rechte Auge einzustellen. Passen Sie weiter an, bis Sie die Farbe nicht mehr sehen können.">
+               Adjust the colors below. Close the right eye to adjust the color for the left eye, and close the left eye to adjust the color for the right eye. Keep adjusting until you can't see the color.</p>
+            <div class="color-input-container">
+                <div class="color-input">
+                    <label for="left-eye-color" data-en="Left Eye Color: " data-de="Farbe des linken Auges: ">Left Eye Color: </label>
+                    <input type="color" id="left-eye-color" name="left-eye-color" value="#ff0000">
+                </div>
+                <div class="color-input">
+                    <label for="right-eye-color" data-en="Right Eye Color: " data-de="Farbe des rechten Auges: ">Right Eye Color: </label>
+                    <input type="color" id="right-eye-color" name="right-eye-color" value="#00FFFF">
+                </div>
             </div>
-            <p class="instruction">After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results.</p>
-            <button class="close-popup-button" id="close-popup-button">Start</button>
+            <p data-en="After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results."
+               data-de="Nachdem Sie die Farben angepasst haben, positionieren Sie sich etwa 30 cm vom Bildschirm entfernt. Halten Sie den Kopf still und bewegen Sie nur die Augen, um die 6 Kreuze mit dem Cursor zu treffen. Danach können Sie die Brille abnehmen, um die Ergebnisse zu sehen.">
+               After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results.</p>
+            <button class="close-popup-button" id="close-popup-button" data-en="Start" data-de="Starten">Start</button>
         </div>
     </div>
 
     <div class="popup" id="info-popup" style="display:none;">
-        <div class="popup-content">
-            <p>If you didn't hit the crosses, don't worry. Try again.</p>
-            <button class="close-popup-button" id="close-info-popup-button">Close</button>
+    <div class="popup-content">
+        <div class="title" data-en="About Strabismus" data-de="Über Strabismus">About Strabismus</div>
+        <div data-en="Strabismus, also known as crossed eyes or squint, is a condition where the eyes do not align properly. It can lead to vision problems and may require treatment by an eye specialist. If you suspect you have strabismus, it's important to consult an eye doctor for proper diagnosis and treatment."
+             data-de="Strabismus, auch bekannt als Schielen oder Schielauge, ist eine Erkrankung, bei der die Augen nicht richtig ausgerichtet sind. Dies kann zu Sehproblemen führen und eine Behandlung durch einen Augenspezialisten erforderlich machen. Wenn Sie vermuten, dass Sie an Strabismus leiden, ist es wichtig, einen Augenarzt zur richtigen Diagnose und Behandlung aufzusuchen.">
+             Strabismus, also known as crossed eyes or squint, is a condition where the eyes do not align properly. It can lead to vision problems and may require treatment by an eye specialist. If you suspect you have strabismus, it's important to consult an eye doctor for proper diagnosis and treatment.
         </div>
+        <hr>
+        <div class="maintaining-eye-health" data-en="Maintaining good eye health is essential. Here are some tips:
+                Get regular eye exams.
+                Protect your eyes from harmful UV rays by wearing sunglasses.
+                Follow a healthy diet rich in fruits and vegetables.
+                Take breaks when using digital screens for extended periods.
+                Avoid smoking, as it can increase the risk of eye diseases."
+             data-de="Die Erhaltung der Augengesundheit ist unerlässlich. Hier sind einige Tipps:
+                Lassen Sie regelmäßig Ihre Augen untersuchen.
+                Schützen Sie Ihre Augen vor schädlichen UV-Strahlen, indem Sie eine Sonnenbrille tragen.
+                Folgen Sie einer gesunden Ernährung mit viel Obst und Gemüse.
+                Machen Sie Pausen bei der Verwendung von digitalen Bildschirmen über längere Zeit.
+                Vermeiden Sie das Rauchen, da dies das Risiko von Augenerkrankungen erhöhen kann.">
+             Maintaining good eye health is essential. Here are some tips:<br>
+             Get regular eye exams.<br>
+             Protect your eyes from harmful UV rays by wearing sunglasses.<br>
+             Follow a healthy diet rich in fruits and vegetables.<br>
+             Take breaks when using digital screens for extended periods.<br>
+             Avoid smoking, as it can increase the risk of eye diseases.
+        </div>
+        <button class="close-popup-button" id="close-info-popup-button" data-en="Close" data-de="Schließen">Close</button>
     </div>
+</div>
 
-    <button class="reset-button" id="reset-button">Reset</button>
-    <button class="open-popup-button" id="open-popup-button">Open Settings</button>
-    <button class="open-info-button" id="open-info-button">Info</button>
+    
+    
+
+    <button class="reset-button" id="reset-button" data-en="Reset" data-de="Zurücksetzen">Reset</button>
+    <button class="open-popup-button" id="open-popup-button" data-en="Open Settings" data-de="Einstellungen öffnen">Open Settings</button>
+    <button class="open-info-button" id="open-info-button" data-en="Info" data-de="Info">Info</button>
     <div class="cross upper-left"></div>
     <div class="cross upper-center"></div>
     <div class="cross upper-right"></div>
@@ -295,6 +369,20 @@
             document.getElementById('info-popup').style.display = 'none';
             document.body.style.cursor = 'none'; // Hide cursor after closing popup
         });
+
+        document.getElementById('en-button').addEventListener('click', function() {
+            switchLanguage('en');
+        });
+
+        document.getElementById('de-button').addEventListener('click', function() {
+            switchLanguage('de');
+        });
+
+        function switchLanguage(language) {
+            document.querySelectorAll('[data-en]').forEach(element => {
+                element.innerText = element.getAttribute(`data-${language}`);
+            });
+        }
     </script>
 </body>
 </html>
