@@ -83,7 +83,7 @@
         .reset-button, .open-popup-button, .open-info-button {
             position: absolute;
             padding: 5px 10px;
-            background-color: #007BFF;
+            background-color: #000000;
             color: white;
             border: none;
             border-radius: 5px;
@@ -91,7 +91,7 @@
             z-index: 15; /* Ensure buttons are above other elements */
         }
         .reset-button:hover, .open-popup-button:hover, .open-info-button:hover {
-            background-color: #0056b3;
+            background-color: #000000;
         }
         .reset-button {
             top: 10px;
@@ -170,14 +170,14 @@
         .close-popup-button {
             margin-top: 20px;
             padding: 10px 20px;
-            background-color: #007BFF;
+            background-color: #000000;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         .close-popup-button:hover {
-            background-color: #0056b3;
+            background-color: #000000;
         }
         .title {
             font-size: 24px;
@@ -203,14 +203,14 @@
         .language-buttons button {
             padding: 5px 10px;
             margin-left: 10px;
-            background-color: #007BFF;
+            background-color: #000000;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         .language-buttons button:hover {
-            background-color: #0056b3;
+            background-color: #000000;
         }
         .maintaining-eye-health {
             text-align: left; /* Align text to the left */
@@ -227,13 +227,13 @@
                 <button id="de-button">Deutsch</button>
             </div>
             <div class="title" data-en="Strabismus Testing" data-de="Strabismus-Test">Strabismus Testing</div>
-            <p data-en="This webpage is designed to test for Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses."
-               data-de="Diese Webseite ist für den Strabismus-Test entwickelt. Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. 3D-Brille.">
+            <p data-en="This page is designed to test if you have any kind of Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses."
+               data-de="Diese Seite wurde erstellt um zu testen ob ein Schielen vorliegt. Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. eine 3D-Brille.">
                This webpage is designed to test for Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses.</p>
             <img src="glasses_image.png" alt="3D Glasses" class="glasses-image">
-            <p data-en="Adjust the colors below when you have other colors on your glasses. Close the right eye to adjust the color for the left eye, and close the left eye to adjust the color for the right eye. Keep adjusting until you can't see the color."
-               data-de="Passen Sie die Farben unten an wenn Sie andere Farben als Brille haben. Schließen Sie das rechte Auge, um die Farbe für das linke Auge einzustellen, und schließen Sie das linke Auge, um die Farbe für das rechte Auge einzustellen. Passen Sie weiter an, bis Sie die Farbe nicht mehr sehen können.">
-               Adjust the colors below. Close the right eye to adjust the color for the left eye, and close the left eye to adjust the color for the right eye. Keep adjusting until you can't see the color.</p>
+            <p data-en="Now put on the matching glasses and look at the colors below, you should not be able to see the red color with your left eye and must be invisible, if not adjust the color. the same story with the right eye."
+               data-de="Setzen Sie nun die passende Brille auf und schauen Sie sich die Farben unten an, Sie sollten die rote Farbe mit dem linken Auge nicht sehen können und muss unsichtbar sein, wenn nicht, passen Sie die Farbe an. Das gleiche Spiel mit dem rechten Auge.">
+               Now put on the matching glasses and look at the colors below, you should not be able to see the red color with your left eye and must be invisible, if not adjust the color. the same story with the right eye.</p>
             <div class="color-input-container">
                 <div class="color-input">
                     <label for="left-eye-color" data-en="Left Eye Color: " data-de="Farbe des linken Auges: ">Left Eye Color: </label>
@@ -244,8 +244,8 @@
                     <input type="color" id="right-eye-color" name="right-eye-color" value="#00FFFF">
                 </div>
             </div>
-            <p data-en="After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results."
-               data-de="Nachdem Sie die Farben angepasst haben, positionieren Sie sich etwa 30 cm vom Bildschirm entfernt. Halten Sie den Kopf still und bewegen Sie nur die Augen, um die 6 Kreuze mit dem Cursor zu treffen. Danach können Sie die Brille abnehmen, um die Ergebnisse zu sehen.">
+            <p data-en="After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses in the middle with the cursor. After that, you can remove the glasses to see the results."
+               data-de="Nachdem Sie die Farben angepasst haben, positionieren Sie sich etwa 30 cm vom Bildschirm entfernt. Halten Sie den Kopf still und bewegen Sie nur die Augen, um die 6 Kreuze mit dem Zeiger in der Mitte zu treffen. Danach können Sie die Brille abnehmen, um die Ergebnisse zu sehen.">
                After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results.</p>
             <button class="close-popup-button" id="close-popup-button" data-en="Start" data-de="Starten">Start</button>
         </div>
@@ -266,17 +266,17 @@
                 Take breaks when using digital screens for extended periods.
                 Avoid smoking, as it can increase the risk of eye diseases."
              data-de="Die Erhaltung der Augengesundheit ist unerlässlich. Hier sind einige Tipps:
-                Lassen Sie regelmäßig Ihre Augen untersuchen.
-                Schützen Sie Ihre Augen vor schädlichen UV-Strahlen, indem Sie eine Sonnenbrille tragen.
-                Folgen Sie einer gesunden Ernährung mit viel Obst und Gemüse.
-                Machen Sie Pausen bei der Verwendung von digitalen Bildschirmen über längere Zeit.
-                Vermeiden Sie das Rauchen, da dies das Risiko von Augenerkrankungen erhöhen kann.">
+                - Lassen Sie regelmäßig Ihre Augen untersuchen.
+                - Schützen Sie Ihre Augen vor schädlichen UV-Strahlen, indem Sie eine Sonnenbrille tragen.
+                - Folgen Sie einer gesunden Ernährung mit viel Obst und Gemüse.
+                - Machen Sie Pausen bei der Verwendung von digitalen Bildschirmen über längere Zeit.
+                - Vermeiden Sie das Rauchen, da dies das Risiko von Augenerkrankungen erhöhen kann.">
              Maintaining good eye health is essential. Here are some tips:<br>
-             Get regular eye exams.<br>
-             Protect your eyes from harmful UV rays by wearing sunglasses.<br>
-             Follow a healthy diet rich in fruits and vegetables.<br>
-             Take breaks when using digital screens for extended periods.<br>
-             Avoid smoking, as it can increase the risk of eye diseases.
+             - Get regular eye exams.<br>
+             - Protect your eyes from harmful UV rays by wearing sunglasses.<br>
+             - Follow a healthy diet rich in fruits and vegetables.<br>
+             - Take breaks when using digital screens for extended periods.<br>
+             - Avoid smoking, as it can increase the risk of eye diseases.
         </div>
         <button class="close-popup-button" id="close-info-popup-button" data-en="Close" data-de="Schließen">Close</button>
     </div>
