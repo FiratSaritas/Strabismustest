@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strabismus Testing Page</title>
+    <title>Strabismus Test</title>
     <style>
         body {
             margin: 0;
@@ -225,69 +225,90 @@
             <div class="language-buttons">
                 <button id="en-button">English</button>
                 <button id="de-button">Deutsch</button>
+                <button id="it-button">Italiano</button>
+                <button id="fr-button">Français</button>
             </div>
-            <div class="title" data-en="Strabismus Testing" data-de="Strabismus-Test">Strabismus Testing</div>
+            <div class="title">
+                <span data-en="Strabismus Test /" data-de="Strabismus-Test /" data-it="Test di Strabismo /" data-fr="Test de Strabisme /">Strabismus-Test</span>
+                <span data-en="Crossed Eyes Test" data-de="Schielen-Test" data-it="Test Occhi Incrociati" data-fr="Test des Yeux Croisés">Schielen-Test</span>
+            </div>
             <p data-en="This page is designed to test if you have any kind of Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses."
-               data-de="Diese Seite wurde erstellt um zu testen ob ein Schielen vorliegt. Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. eine 3D-Brille.">
-               This webpage is designed to test for Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses.</p>
+               data-de="Diese Seite wurde erstellt um zu testen ob ein Schielen vorliegt. Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. eine 3D-Brille."
+               data-it="Questa pagina è progettata per verificare se hai qualche tipo di strabismo. Per eseguire il test, avrai bisogno di occhiali con due colori diversi, come gli occhiali 3D."
+               data-fr="Cette page est conçue pour tester si vous avez un quelconque strabisme. Pour réaliser le test, vous aurez besoin de lunettes avec deux couleurs différentes, comme des lunettes 3D.">
+               Diese Seite wurde erstellt um zu testen ob ein Schielen vorliegt. Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. eine 3D-Brille.
+            </p>
             <img src="glasses_image.png" alt="3D Glasses" class="glasses-image">
             <p data-en="Now put on the matching glasses and look at the colors below, you should not be able to see the red color with your left eye and must be invisible, if not adjust the color. the same story with the right eye."
-               data-de="Setzen Sie nun die passende Brille auf und schauen Sie sich die Farben unten an, Sie sollten die rote Farbe mit dem linken Auge nicht sehen können und muss unsichtbar sein, wenn nicht, passen Sie die Farbe an. Das gleiche Spiel mit dem rechten Auge.">
-               Now put on the matching glasses and look at the colors below, you should not be able to see the red color with your left eye and must be invisible, if not adjust the color. the same story with the right eye.</p>
+               data-de="Setzen Sie nun die passende Brille auf und schauen Sie sich die Farben unten an, Sie sollten die rote Farbe mit dem linken Auge nicht sehen können und muss unsichtbar sein, wenn nicht, passen Sie die Farbe an. Das gleiche Spiel mit dem rechten Auge."
+               data-it="Ora indossa gli occhiali corrispondenti e guarda i colori sotto, non dovresti essere in grado di vedere il colore rosso con l'occhio sinistro e deve essere invisibile, in caso contrario, regola il colore. la stessa cosa con l'occhio destro."
+               data-fr="Maintenant, mettez les lunettes correspondantes et regardez les couleurs ci-dessous, vous ne devriez pas être capable de voir la couleur rouge avec votre œil gauche et elle doit être invisible, sinon ajustez la couleur. la même chose avec l'œil droit.">
+               Setzen Sie nun die passende Brille auf und schauen Sie sich die Farben unten an, Sie sollten die rote Farbe mit dem linken Auge nicht sehen können und muss unsichtbar sein, wenn nicht, passen Sie die Farbe an. Das gleiche Spiel mit dem rechten Auge.
+            </p>
             <div class="color-input-container">
                 <div class="color-input">
-                    <label for="left-eye-color" data-en="Left Eye Color: " data-de="Farbe des linken Auges: ">Left Eye Color: </label>
+                    <label for="left-eye-color" data-en="Left Eye Color: " data-de="Farbe des linken Auges: " data-it="Colore dell'occhio sinistro: " data-fr="Couleur de l'œil gauche: ">Farbe des linken Auges: </label>
                     <input type="color" id="left-eye-color" name="left-eye-color" value="#ff0000">
                 </div>
                 <div class="color-input">
-                    <label for="right-eye-color" data-en="Right Eye Color: " data-de="Farbe des rechten Auges: ">Right Eye Color: </label>
+                    <label for="right-eye-color" data-en="Right Eye Color: " data-de="Farbe des rechten Auges: " data-it="Colore dell'occhio destro: " data-fr="Couleur de l'œil droit: ">Farbe des rechten Auges: </label>
                     <input type="color" id="right-eye-color" name="right-eye-color" value="#00FFFF">
                 </div>
             </div>
-            <p data-en="After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses in the middle with the cursor. After that, you can remove the glasses to see the results."
-               data-de="Nachdem Sie die Farben angepasst haben, positionieren Sie sich etwa 30 cm vom Bildschirm entfernt. Halten Sie den Kopf still und bewegen Sie nur die Augen, um die 6 Kreuze mit dem Zeiger in der Mitte zu treffen. Danach können Sie die Brille abnehmen, um die Ergebnisse zu sehen.">
-               After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results.</p>
-            <button class="close-popup-button" id="close-popup-button" data-en="Start" data-de="Starten">Start</button>
+            <p data-en="After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results."
+               data-de="Nachdem Sie die Farben angepasst haben, positionieren Sie sich etwa 30 cm vom Bildschirm entfernt. Halten Sie den Kopf still und bewegen Sie nur die Augen, um die 6 Kreuze mit dem Zeiger in der Mitte zu treffen. Danach können Sie die Brille abnehmen, um die Ergebnisse zu sehen."
+               data-it="Dopo aver regolato i colori, posizionati a circa 30 cm di distanza dallo schermo. Tieni la testa ferma e muovi solo gli occhi per colpire le 6 croci con il cursore. Dopodiché, puoi toglierti gli occhiali per vedere i risultati."
+               data-fr="Après avoir ajusté les couleurs, placez-vous à environ 30 cm de l'écran. Gardez la tête immobile et ne bougez que les yeux pour toucher les 6 croix avec le curseur. Après cela, vous pouvez retirer les lunettes pour voir les résultats.">
+               Nachdem Sie die Farben angepasst haben, positionieren Sie sich etwa 30 cm vom Bildschirm entfernt. Halten Sie den Kopf still und bewegen Sie nur die Augen, um die 6 Kreuze mit dem Zeiger in der Mitte zu treffen. Danach können Sie die Brille abnehmen, um die Ergebnisse zu sehen.
+            </p>
+            <button class="close-popup-button" id="close-popup-button" data-en="Start" data-de="Starten" data-it="Inizia" data-fr="Commencer">Starten</button>
         </div>
     </div>
 
     <div class="popup" id="info-popup" style="display:none;">
-    <div class="popup-content">
-        <div class="title" data-en="About Strabismus" data-de="Über Strabismus">About Strabismus</div>
-        <div data-en="Strabismus, also known as crossed eyes or squint, is a condition where the eyes do not align properly. It can lead to vision problems and may require treatment by an eye specialist. If you suspect you have strabismus, it's important to consult an eye doctor for proper diagnosis and treatment."
-             data-de="Strabismus, auch bekannt als Schielen oder Schielauge, ist eine Erkrankung, bei der die Augen nicht richtig ausgerichtet sind. Dies kann zu Sehproblemen führen und eine Behandlung durch einen Augenspezialisten erforderlich machen. Wenn Sie vermuten, dass Sie an Strabismus leiden, ist es wichtig, einen Augenarzt zur richtigen Diagnose und Behandlung aufzusuchen.">
-             Strabismus, also known as crossed eyes or squint, is a condition where the eyes do not align properly. It can lead to vision problems and may require treatment by an eye specialist. If you suspect you have strabismus, it's important to consult an eye doctor for proper diagnosis and treatment.
-        </div>
-        <hr>
-        <div class="maintaining-eye-health" data-en="Maintaining good eye health is essential. Here are some tips:
-                Get regular eye exams.
-                Protect your eyes from harmful UV rays by wearing sunglasses.
-                Follow a healthy diet rich in fruits and vegetables.
-                Take breaks when using digital screens for extended periods.
-                Avoid smoking, as it can increase the risk of eye diseases."
-             data-de="Die Erhaltung der Augengesundheit ist unerlässlich. Hier sind einige Tipps:
+        <div class="popup-content">
+            <div class="title" data-en="About Strabismus" data-de="Über Strabismus" data-it="Informazioni sullo Strabismo" data-fr="À propos du Strabisme">Über Strabismus</div>
+            <div data-en="Strabismus, also known as crossed eyes or squint, is a condition where the eyes do not align properly. It can lead to vision problems and may require treatment by an eye specialist. If you suspect you have strabismus, it's important to consult an eye doctor for proper diagnosis and treatment."
+                 data-de="Strabismus, auch bekannt als Schielen oder Schielauge, ist eine Erkrankung, bei der die Augen nicht richtig ausgerichtet sind. Dies kann zu Sehproblemen führen und eine Behandlung durch einen Augenspezialisten erforderlich machen. Wenn Sie vermuten, dass Sie an Strabismus leiden, ist es wichtig, einen Augenarzt zur richtigen Diagnose und Behandlung aufzusuchen."
+                 data-it="Lo strabismo, noto anche come occhi incrociati o strabismo divergente, è una condizione in cui gli occhi non sono allineati correttamente. Può causare problemi di vista e potrebbe richiedere il trattamento di uno specialista degli occhi. Se sospetti di avere strabismo, è importante consultare un oculista per una diagnosi e un trattamento adeguati."
+                 data-fr="Le strabisme, également connu sous le nom d'yeux croisés ou de strabisme, est une condition où les yeux ne s'alignent pas correctement. Cela peut entraîner des problèmes de vision et peut nécessiter un traitement par un spécialiste des yeux. Si vous pensez avoir un strabisme, il est important de consulter un ophtalmologiste pour un diagnostic et un traitement appropriés.">
+                 Strabismus, auch bekannt als Schielen oder Schielauge, ist eine Erkrankung, bei der die Augen nicht richtig ausgerichtet sind. Dies kann zu Sehproblemen führen und eine Behandlung durch einen Augenspezialisten erforderlich machen. Wenn Sie vermuten, dass Sie an Strabismus leiden, ist es wichtig, einen Augenarzt zur richtigen Diagnose und Behandlung aufzusuchen.
+            </div>
+            <hr>
+            <div class="maintaining-eye-health" 
+                data-en="Maintaining good eye health is essential. Here are some tips:
+                - Get regular eye exams.
+                - Protect your eyes from harmful UV rays by wearing sunglasses.
+                - Follow a healthy diet rich in fruits and vegetables.
+                - Take breaks when using digital screens for extended periods.
+                - Avoid smoking, as it can increase the risk of eye diseases."
+                data-de="Die Erhaltung der Augengesundheit ist unerlässlich. Hier sind einige Tipps:
                 - Lassen Sie regelmäßig Ihre Augen untersuchen.
                 - Schützen Sie Ihre Augen vor schädlichen UV-Strahlen, indem Sie eine Sonnenbrille tragen.
                 - Folgen Sie einer gesunden Ernährung mit viel Obst und Gemüse.
                 - Machen Sie Pausen bei der Verwendung von digitalen Bildschirmen über längere Zeit.
-                - Vermeiden Sie das Rauchen, da dies das Risiko von Augenerkrankungen erhöhen kann.">
-             Maintaining good eye health is essential. Here are some tips:<br>
-             - Get regular eye exams.<br>
-             - Protect your eyes from harmful UV rays by wearing sunglasses.<br>
-             - Follow a healthy diet rich in fruits and vegetables.<br>
-             - Take breaks when using digital screens for extended periods.<br>
-             - Avoid smoking, as it can increase the risk of eye diseases.
+                - Vermeiden Sie das Rauchen, da dies das Risiko von Augenerkrankungen erhöhen kann."
+                 data-it="Mantenere una buona salute degli occhi è essenziale. Ecco alcuni consigli:
+                 - Fai esami oculistici regolari.
+                 - Proteggi i tuoi occhi dai raggi UV dannosi indossando occhiali da sole.
+                 - Segui una dieta sana ricca di frutta e verdura.
+                 - Fai delle pause quando usi schermi digitali per lunghi periodi.
+                 - Evita di fumare, poiché può aumentare il rischio di malattie degli occhi."
+                 data-fr="Maintenir une bonne santé oculaire est essentiel. Voici quelques conseils :
+                 - Faites des examens oculaires réguliers.
+                 - Protégez vos yeux des rayons UV nocifs en portant des lunettes de soleil.
+                 - Suivez un régime alimentaire sain riche en fruits et légumes.
+                 - Faites des pauses lorsque vous utilisez des écrans numériques pendant de longues périodes.
+                 - Évitez de fumer, car cela peut augmenter le risque de maladies oculaires.">
+                
+            </div>
+            <button class="close-popup-button" id="close-info-popup-button" data-en="Close" data-de="Schließen" data-it="Chiudi" data-fr="Fermer">Schließen</button>
         </div>
-        <button class="close-popup-button" id="close-info-popup-button" data-en="Close" data-de="Schließen">Close</button>
     </div>
-</div>
 
-    
-    
-
-    <button class="reset-button" id="reset-button" data-en="Reset" data-de="Zurücksetzen">Reset</button>
-    <button class="open-popup-button" id="open-popup-button" data-en="Open Settings" data-de="Einstellungen öffnen">Open Settings</button>
-    <button class="open-info-button" id="open-info-button" data-en="Info" data-de="Info">Info</button>
+    <button class="reset-button" id="reset-button" data-en="Reset" data-de="Zurücksetzen" data-it="Reimposta" data-fr="Réinitialiser">Zurücksetzen</button>
+    <button class="open-popup-button" id="open-popup-button" data-en="Open Settings" data-de="Einstellungen öffnen" data-it="Apri Impostazioni" data-fr="Ouvrir les paramètres">Einstellungen öffnen</button>
+    <button class="open-info-button" id="open-info-button" data-en="Info" data-de="Info" data-it="Informazioni" data-fr="Info">Info</button>
     <div class="cross upper-left"></div>
     <div class="cross upper-center"></div>
     <div class="cross upper-right"></div>
@@ -298,15 +319,15 @@
 
     <script>
         let allowDotPlacement = true;
-
+    
         function moveCursorDot(e) {
             const cursorDot = document.getElementById('cursor-dot');
             cursorDot.style.left = e.clientX + 'px';
             cursorDot.style.top = e.clientY + 'px';
         }
-
+    
         function placeGreenDot(e) {
-            if (document.getElementById('popup').style.display === 'none' && allowDotPlacement) {
+            if (document.getElementById('popup').style.display === 'none' && document.getElementById('info-popup').style.display === 'none' && allowDotPlacement) {
                 const newDot = document.createElement('div');
                 newDot.style.position = 'absolute';
                 newDot.style.width = '10px';
@@ -320,7 +341,7 @@
                 document.body.appendChild(newDot);
             }
         }
-
+    
         function updateCrossColors() {
             const leftEyeColor = document.getElementById('left-eye-color').value;
             const styleElement = document.createElement('style');
@@ -331,15 +352,15 @@
             `;
             document.head.appendChild(styleElement);
         }
-
+    
         document.addEventListener('mousemove', moveCursorDot);
         document.addEventListener('click', placeGreenDot);
-
+    
         document.getElementById('reset-button').addEventListener('click', function() {
             const dots = document.querySelectorAll('body > div:not(.cross):not(#cursor-dot):not(.popup)');
             dots.forEach(dot => dot.remove());
         });
-
+    
         document.getElementById('close-popup-button').addEventListener('click', function() {
             allowDotPlacement = false;
             document.getElementById('popup').style.display = 'none';
@@ -351,38 +372,55 @@
                 allowDotPlacement = true;
             }, 100);
         });
-
+    
         document.getElementById('open-popup-button').addEventListener('click', function() {
             allowDotPlacement = false;
             document.getElementById('popup').style.display = 'flex';
             document.body.style.cursor = 'default'; // Show cursor when popup is open
         });
-
+    
         document.getElementById('open-info-button').addEventListener('click', function() {
             allowDotPlacement = false;
             document.getElementById('info-popup').style.display = 'flex';
             document.body.style.cursor = 'default'; // Show cursor when popup is open
         });
-
-        document.getElementById('close-info-popup-button').addEventListener('click', function() {
-            allowDotPlacement = true;
+    
+        function closeInfoPopup() {
+            allowDotPlacement = false;
             document.getElementById('info-popup').style.display = 'none';
             document.body.style.cursor = 'none'; // Hide cursor after closing popup
-        });
-
+            setTimeout(() => {
+                allowDotPlacement = true;
+            }, 100);
+        }
+    
+        document.getElementById('close-info-popup-button').addEventListener('click', closeInfoPopup);
+    
         document.getElementById('en-button').addEventListener('click', function() {
             switchLanguage('en');
         });
-
+    
         document.getElementById('de-button').addEventListener('click', function() {
             switchLanguage('de');
         });
-
+    
+        document.getElementById('it-button').addEventListener('click', function() {
+            switchLanguage('it');
+        });
+    
+        document.getElementById('fr-button').addEventListener('click', function() {
+            switchLanguage('fr');
+        });
+    
         function switchLanguage(language) {
             document.querySelectorAll('[data-en]').forEach(element => {
                 element.innerText = element.getAttribute(`data-${language}`);
             });
         }
+    
+        // Set default language to German
+        switchLanguage('de');
     </script>
+    
 </body>
 </html>
