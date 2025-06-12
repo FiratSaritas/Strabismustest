@@ -140,6 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Set default language
-        switchLanguage('de');
+        switchLanguage('en');
     }
 });
