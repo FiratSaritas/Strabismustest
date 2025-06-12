@@ -3,496 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use our free online strabismus test to detect potential eye misalignment. Quick, easy, and medically informed – ideal for all ages." />
-    <meta name="keywords" content="strabismus test, eye alignment test, lazy eye test, online eye test, eye misalignment check, squint test" />
-    <meta name="author" content="Strabismus-Test.ch" />
-    <meta name="google-adsense-account" content="ca-pub-9394843071535758">
-    <title>Strabismus Test</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9394843071535758"
-     crossorigin="anonymous"></script>
+    <title>Strabismus Test - Information and Online Tool</title>
+    <meta name="description" content="A comprehensive resource for understanding strabismus (crossed eyes), including causes, treatments, and a free online test to check for eye misalignment.">
+    <meta name="keywords" content="strabismus, crossed eyes, lazy eye, eye alignment, strabismus test, squint test, vision therapy">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9394843071535758" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-            cursor: none; /* Hide default cursor */
-            position: relative;
-            font-family: Arial, sans-serif; /* Modern, easy-to-read font */
-            overflow: hidden; /* This will hide any content that extends beyond the viewport */
-        }
-        .cross {
-            position: absolute;
-            width: 100px; /* Increased width for longer cross */
-            height: 100px; /* Increased height for longer cross */
-            z-index: 10; /* Ensure crosses are above the cursor dot */
-            margin: 20px; /* Increase the margin to create more space between crosses */
-        }
-        .cross:before, .cross:after {
-            content: '';
-            position: absolute;
-            background-color: var(--cross-color, #ff0000);
-        }
-        .cross:before {
-            width: calc(100% + 20px); /* Increased width with spacing */
-            height: 2px;
-            top: 50%;
-            left: -10px; /* Adjusted left position */
-            transform: translateY(-50%);
-        }
-        .cross:after {
-            height: calc(100% + 20px); /* Increased height with spacing */
-            width: 2px;
-            top: -10px; /* Adjusted top position */
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .upper-left {
-            top: 20%;
-            left: 20%;
-        }
-        .upper-center {
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .upper-right {
-            top: 20%;
-            right: 20%;
-        }
-        .lower-left {
-            bottom: 20%;
-            left: 20%;
-        }
-        .lower-center {
-            bottom: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .lower-right {
-            bottom: 20%;
-            right: 20%;
-        }
-        .cursor-dot {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #00FFFF;
-            border-radius: 50%;
-            pointer-events: none; /* Ensure dot doesn't capture mouse events */
-            transform: translate(-50%, -50%); /* Center the dot on the cursor */
-            z-index: 5; /* Ensure cursor dot is below the crosses */
-        }
-        .reset-button, .open-popup-button, .open-info-button {
-            position: absolute;
-            padding: 5px 10px;
-            background-color: #000000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 15; /* Ensure buttons are above other elements */
-        }
-        .reset-button:hover, .open-popup-button:hover, .open-info-button:hover {
-            background-color: #000000;
-        }
-        .reset-button {
-            top: 10px;
-            left: 10px;
-        }
-        .open-popup-button {
-            top: 10px;
-            right: 110px; /* Adjust the position if needed */
-        }
-        .open-info-button {
-            top: 10px;
-            right: 10px;
-        }
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(240, 240, 240, 0.9); /* Bright background with transparency */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: black;
-            text-align: center;
-            z-index: 1000;
-            cursor: default; /* Show default cursor during popup */
-            font-family: Arial, sans-serif; /* Modern, easy-to-read font */
-        }
-        .popup-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: white;
-            padding: 50px;
-            border-radius: 10px;
-            width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        .color-input-container {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 500px;
-            margin: 10px 0;
-        }
-        .color-input {
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .color-input label {
-            margin-right: 10px;
-            font-size: 16px;
-        }
-        .color-input input {
-            width: 50px;
-            height: 50px;
-            border: none;
-            background-color: white;
-            cursor: pointer;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
-        .color-input input::-webkit-color-swatch-wrapper {
-            padding: 0;
-        }
-        .color-input input::-webkit-color-swatch {
-            border: none;
-        }
-        .color-input input::-moz-color-swatch {
-            border: none;
-        }
-        .close-popup-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #000000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .close-popup-button:hover {
-            background-color: #000000;
-        }
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .instruction {
-            font-size: 14px;
-            margin-top: 10px;
-            text-align: left;
-        }
-        .glasses-image {
-            margin-top: 10px;
-            max-width: 50%;
-            height: auto;
-        }
-        .language-buttons {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        .language-buttons button {
-            padding: 5px 10px;
-            margin-left: 10px;
-            background-color: #000000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .language-buttons button:hover {
-            background-color: #000000;
-        }
-        .info-section {
-            text-align: left;
-            margin: 15px 0;
-            width: 100%;
-        }
-        .info-section h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        .info-section ul {
-            padding-left: 20px;
-            margin-top: 5px;
-        }
-        .info-section li {
-            margin-bottom: 5px;
-        }
-        .reference {
-            font-size: 12px;
-            font-style: italic;
-            margin-top: 5px;
-            text-align: left;
-        }
-        .disclaimer {
-            background-color: #fff8e1;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 15px 0;
-            text-align: left;
-            border-left: 4px solid #ffc107;
-        }
-    </style>
 </head>
 <body>
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <div class="language-buttons">
-                <button id="en-button">English</button>
-                <button id="de-button">Deutsch</button>
-                <button id="it-button">Italiano</button>
-                <button id="fr-button">Français</button>
-            </div>
-            <div class="title">
-                <span data-en="Strabismus Test /" data-de="Strabismus-Test /" data-it="Test di Strabismo /" data-fr="Test de Strabisme /">Strabismus-Test</span>
-                <span data-en="Crossed Eyes Test" data-de="Schielen-Test" data-it="Test Occhi Incrociati" data-fr="Test des Yeux Croisés">Schielen-Test</span>
-            </div>
-            <p data-en="This page is designed to test if you have any kind of Strabismus. To conduct the test, you'll need glasses with two different colors, such as 3D glasses."
-               data-de="Diese Seite wurde erstellt um zu testen ob ein Schielen vorliegt. Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. eine 3D-Brille."
-               data-it="Questa pagina è progettata per verificare se hai qualche tipo di strabismo. Per eseguire il test, avrai bisogno di occhiali con due colori diversi, come gli occhiali 3D."
-               data-fr="Cette page est conçue pour tester si vous avez un quelconque strabisme. Pour réaliser le test, vous aurez besoin de lunettes avec deux couleurs différentes, comme des lunettes 3D.">
-               Diese Seite wurde erstellt um zu testen ob ein Schielen vorliegt. Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. eine 3D-Brille.
-            </p>
-            <img src="glasses_image.png" alt="3D Glasses" class="glasses-image">
-            <p data-en="Now put on the matching glasses and look at the colors below, you should not be able to see the red color with your left eye and must be invisible, if not adjust the color. the same story with the right eye."
-               data-de="Setzen Sie nun die passende Brille auf und schauen Sie sich die Farben unten an, Sie sollten die rote Farbe mit dem linken Auge nicht sehen können und muss unsichtbar sein, wenn nicht, passen Sie die Farbe an. Das gleiche Spiel mit dem rechten Auge."
-               data-it="Ora indossa gli occhiali corrispondenti e guarda i colori sotto, non dovresti essere in grado di vedere il colore rosso con l'occhio sinistro e deve essere invisibile, in caso contrario, regola il colore. la stessa cosa con l'occhio destro."
-               data-fr="Maintenant, mettez les lunettes correspondantes et regardez les couleurs ci-dessous, vous ne devriez pas être capable de voir la couleur rouge avec votre œil gauche et elle doit être invisible, sinon ajustez la couleur. la même chose avec l'œil droit.">
-               Setzen Sie nun die passende Brille auf und schauen Sie sich die Farben unten an, Sie sollten die rote Farbe mit dem linken Auge nicht sehen können und muss unsichtbar sein, wenn nicht, passen Sie die Farbe an. Das gleiche Spiel mit dem rechten Auge.
-            </p>
-            <div class="color-input-container">
-                <div class="color-input">
-                    <label for="left-eye-color" data-en="Left Eye Color: " data-de="Farbe des linken Auges: " data-it="Colore dell'occhio sinistro: " data-fr="Couleur de l'œil gauche: ">Farbe des linken Auges: </label>
-                    <input type="color" id="left-eye-color" name="left-eye-color" value="#ff0000">
-                </div>
-                <div class="color-input">
-                    <label for="right-eye-color" data-en="Right Eye Color: " data-de="Farbe des rechten Auges: " data-it="Colore dell'occhio destro: " data-fr="Couleur de l'œil droit: ">Farbe des rechten Auges: </label>
-                    <input type="color" id="right-eye-color" name="right-eye-color" value="#00FFFF">
-                </div>
-            </div>
-            <p data-en="After adjusting the colors, position yourself about 30 cm away from the screen. Keep your head still and only move your eyes to hit the 6 crosses with the cursor. After that, you can remove the glasses to see the results."
-               data-de="Nachdem Sie die Farben angepasst haben, positionieren Sie sich etwa 30 cm vom Bildschirm entfernt. Halten Sie den Kopf still und bewegen Sie nur die Augen, um die 6 Kreuze mit dem Zeiger in der Mitte zu treffen. Danach können Sie die Brille abnehmen, um die Ergebnisse zu sehen."
-               data-it="Dopo aver regolato i colori, posizionati a circa 30 cm di distanza dallo schermo. Tieni la testa ferma e muovi solo gli occhi per colpire le 6 croci con il cursore. Dopodiché, puoi toglierti gli occhiali per vedere i risultati."
-               data-fr="Après avoir ajusté les couleurs, placez-vous à environ 30 cm de l'écran. Gardez la tête immobile et ne bougez que les yeux pour toucher les 6 croix avec le curseur. Après cela, vous pouvez retirer les lunettes pour voir les résultats.">
-               Nachdem Sie die Farben angepasst haben, positionieren Sie sich etwa 30 cm vom Bildschirm entfernt. Halten Sie den Kopf still und bewegen Sie nur die Augen, um die 6 Kreuze mit dem Zeiger in der Mitte zu treffen. Danach können Sie die Brille abnehmen, um die Ergebnisse zu sehen.
-            </p>
-            <button class="close-popup-button" id="close-popup-button" data-en="Start" data-de="Starten" data-it="Inizia" data-fr="Commencer">Starten</button>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Strabismus-Test.ch</a>
+            <nav class="nav-main">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Strabismus</a>
+                <a href="treatment.html">Treatment</a>
+                <a href="test.html">Online Test</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </div>
+    </header>
 
-    <div class="popup" id="info-popup" style="display:none;">
-        <div class="popup-content">
-            <div class="title" data-en="About Strabismus" data-de="Über Strabismus" data-it="Informazioni sullo Strabismo" data-fr="À propos du Strabisme">Über Strabismus</div>
-            
-            <div class="info-section">
-                <h3 data-en="What is Strabismus?" data-de="Was ist Strabismus?" data-it="Cos'è lo Strabismo?" data-fr="Qu'est-ce que le Strabisme?">Was ist Strabismus?</h3>
-                <div data-en="Strabismus (crossed eyes) is a vision condition where the eyes don't properly align with each other when looking at an object. Approximately 4% of the US population has strabismus. It occurs when eye muscles don't work together correctly, causing one eye to look straight ahead while the other turns inward, outward, upward, or downward."
-                     data-de="Strabismus (Schielen) ist eine Sehstörung, bei der die Augen bei der Betrachtung eines Objekts nicht richtig ausgerichtet sind. Etwa 4% der US-Bevölkerung sind betroffen. Es tritt auf, wenn die Augenmuskeln nicht richtig zusammenarbeiten, wodurch ein Auge geradeaus schaut, während das andere nach innen, außen, oben oder unten zeigt."
-                     data-it="Lo strabismo (occhi incrociati) è una condizione visiva in cui gli occhi non si allineano correttamente quando guardano un oggetto. Circa il 4% della popolazione statunitense ne è affetto. Si verifica quando i muscoli oculari non lavorano correttamente insieme, causando la deviazione di un occhio verso l'interno, l'esterno, l'alto o il basso."
-                     data-fr="Le strabisme (yeux croisés) est une condition visuelle où les yeux ne s'alignent pas correctement lorsqu'ils regardent un objet. Environ 4% de la population américaine est concernée. Cela se produit lorsque les muscles oculaires ne travaillent pas correctement ensemble, provoquant la déviation d'un œil vers l'intérieur, l'extérieur, le haut ou le bas.">
-                </div>
+    <main class="content-container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Understanding and Testing for Strabismus</h1>
+                <p>Welcome to your complete guide on strabismus (crossed eyes). Learn about the condition and use our free, interactive tool to perform a preliminary check of your eye alignment.</p>
+                <a href="test.html" class="cta-button">Take the Online Test</a>
             </div>
+        </section>
 
-            <div class="info-section">
-                <h3 data-en="Why This Test is Helpful" data-de="Warum dieser Test hilfreich ist" data-it="Perché questo test è utile" data-fr="Pourquoi ce test est utile">Warum dieser Test hilfreich ist</h3>
-                <div data-en="This test helps identify potential alignment issues by isolating what each eye sees. The color-filtered glasses allow each eye to see only specific elements:"
-                     data-de="Dieser Test hilft, potenzielle Ausrichtungsprobleme zu identifizieren, indem isoliert wird, was jedes Auge sieht. Die farbgefilterten Brillen ermöglichen jedem Auge, nur bestimmte Elemente zu sehen:"
-                     data-it="Questo test aiuta a identificare potenziali problemi di allineamento isolando ciò che ogni occhio vede. Gli occhiali con filtri colorati consentono a ciascun occhio di vedere solo elementi specifici:"
-                     data-fr="Ce test aide à identifier d'éventuels problèmes d'alignement en isolant ce que chaque œil voit. Les lunettes à filtres colorés permettent à chaque œil de ne voir que des éléments spécifiques:">
-                </div>
-                <ul>
-                    <li data-en="Detects subtle misalignments that might not be obvious" data-de="Erkennt subtile Fehlstellungen, die nicht offensichtlich sein könnten" data-it="Rileva disallineamenti sottili che potrebbero non essere evidenti" data-fr="Détecte les désalignements subtils qui pourraient ne pas être évidents"></li>
-                    <li data-en="Provides a preliminary assessment of eye coordination" data-de="Bietet eine vorläufige Bewertung der Augenkoordination" data-it="Fornisce una valutazione preliminare della coordinazione oculare" data-fr="Fournit une évaluation préliminaire de la coordination oculaire"></li>
-                    <li data-en="Helps identify conditions like esotropia (inward turning) or exotropia (outward turning)" data-de="Hilft bei der Identifizierung von Erkrankungen wie Esotropie (Einwärtsschielen) oder Exotropie (Auswärtsschielen)" data-it="Aiuta a identificare condizioni come esotropia (deviazione interna) o exotropia (deviazione esterna)" data-fr="Aide à identifier des conditions comme l'ésotropie (déviation interne) ou l'exotropie (déviation externe)"></li>
-                </ul>
-            </div>
+        <article class="info-article">
+            <h2>What is Strabismus?</h2>
+            <p>Strabismus is a vision condition in which a person's eyes do not align properly with one another. While one eye looks at an object, the other eye may turn inward, outward, upward, or downward. This misalignment can be constant or it may come and go. If left untreated, particularly in children, it can lead to amblyopia (lazy eye) and a permanent loss of vision in the turned eye.</p>
+            <p>It's a common condition, affecting an estimated 2-4% of the population. The cause often relates to a problem with the eye muscles, the nerves that control them, or the vision center in the brain. Learn more on our <a href="about.html">About Strabismus</a> page.</p>
 
-            <div class="info-section">
-                <h3 data-en="How to Interpret Results" data-de="Ergebnisse interpretieren" data-it="Come interpretare i risultati" data-fr="Comment interpréter les résultats">Ergebnisse interpretieren</h3>
-                <div data-en="After completing the test and removing your glasses:"
-                     data-de="Nach Abschluss des Tests und dem Abnehmen der Brille:"
-                     data-it="Dopo aver completato il test e aver rimosso gli occhiali:"
-                     data-fr="Après avoir terminé le test et retiré vos lunettes:">
-                </div>
-                <ul>
-                    <li data-en="<strong>Normal alignment:</strong> All green dots appear directly on the crosses" data-de="<strong>Normale Ausrichtung:</strong> Alle grünen Punkte erscheinen direkt auf den Kreuzen" data-it="<strong>Allineamento normale:</strong> Tutti i punti verdi appaiono direttamente sulle croci" data-fr="<strong>Alignement normal:</strong> Tous les points verts apparaissent directement sur les croix"></li>
-                    <li data-en="<strong>Potential misalignment:</strong> Green dots appear consistently shifted in one direction" data-de="<strong>Potenzielle Fehlstellung:</strong> Grüne Punkte erscheinen konsequent in eine Richtung verschoben" data-it="<strong>Possibile disallineamento:</strong> I punti verdi appaiono costantemente spostati in una direzione" data-fr="<strong>Désalignement potentiel:</strong> Les points verts apparaissent constamment décalés dans une direction"></li>
-                    <li data-en="<strong>Significant misalignment:</strong> Green dots are far from crosses or appear in inconsistent positions" data-de="<strong>Signifikante Fehlstellung:</strong> Grüne Punkte sind weit von den Kreuzen entfernt oder erscheinen in inkonsistenten Positionen" data-it="<strong>Disallineamento significativo:</strong> I punti verdi sono lontani dalle croci o appaiono in posizioni incoerenti" data-fr="<strong>Désalignement significatif:</strong> Les points verts sont loin des croix ou apparaissent à des positions incohérentes"></li>
-                </ul>
-            </div>
+            <h2>Why Early Detection Matters</h2>
+            <p>The brain and eyes must work together for clear, single vision. When eyes are misaligned, the brain receives two different images. To avoid double vision, a child's brain may learn to ignore the image from the misaligned eye. This lack of use can cause the vision in that eye to weaken, a condition known as amblyopia or "lazy eye."</p>
+            <p>Early detection and professional treatment are the best ways to prevent long-term vision problems. Our online test can serve as a first step in identifying potential issues, but it is not a substitute for a comprehensive exam by an ophthalmologist or optometrist.</p>
 
-            <div class="disclaimer">
-                <h3 data-en="Important Disclaimer" data-de="Wichtiger Hinweis" data-it="Avviso importante" data-fr="Avertissement important">Wichtiger Hinweis</h3>
-                <div data-en="This test provides preliminary information only and cannot replace a professional eye examination. If you notice any irregularities or have concerns about your vision:"
-                     data-de="Dieser Test liefert nur vorläufige Informationen und kann keine professionelle Augenuntersuchung ersetzen. Wenn Sie Unregelmäßigkeiten bemerken oder Bedenken bezüglich Ihrer Sehkraft haben:"
-                     data-it="Questo test fornisce solo informazioni preliminari e non può sostituire un esame oculistico professionale. Se noti irregolarità o hai preoccupazioni sulla tua vista:"
-                     data-fr="Ce test fournit uniquement des informations préliminaires et ne peut remplacer un examen oculaire professionnel. Si vous remarquez des irrégularités ou avez des inquiétudes concernant votre vision:">
-                </div>
-                <ul>
-                    <li data-en="Consult a licensed optometrist or ophthalmologist" data-de="Konsultieren Sie einen zugelassenen Optometristen oder Augenarzt" data-it="Consulta un optometrista o oftalmologo autorizzato" data-fr="Consultez un optométriste ou ophtalmologiste agréé"></li>
-                    <li data-en="Schedule a comprehensive eye exam annually" data-de="Vereinbaren Sie jährlich eine umfassende Augenuntersuchung" data-it="Prenota un esame oculistico completo annualmente" data-fr="Planifiez un examen oculaire complet annuel"></li>
-                    <li data-en="Children should have their first eye exam at 6 months, then at age 3" data-de="Kinder sollten ihre erste Augenuntersuchung mit 6 Monaten und dann mit 3 Jahren haben" data-it="I bambini dovrebbero avere il primo esame oculistico a 6 mesi, poi a 3 anni" data-fr="Les enfants devraient avoir leur premier examen oculaire à 6 mois, puis à 3 ans"></li>
-                </ul>
-            </div>
+             <h2>How Our Test Can Help</h2>
+            <p>Our interactive strabismus test is designed to help you check for potential eye misalignments from the comfort of your home. It uses a well-known method involving colored filters (like red/cyan 3D glasses) to isolate what each eye sees. By tracking how you perceive objects on the screen, the test can give a preliminary indication of how well your eyes are working together.</p>
+            <a href="test.html" class="cta-button-secondary">Learn How the Test Works</a>
+        </article>
+    </main>
 
-            <div class="info-section">
-                <h3 data-en="Eye Care Recommendations" data-de="Empfehlungen zur Augenpflege" data-it="Raccomandazioni per la cura degli occhi" data-fr="Recommandations pour les soins oculaires">Empfehlungen zur Augenpflege</h3>
-                <ul>
-                    <li data-en="Follow the 20-20-20 rule: Every 20 minutes, look at something 20 feet away for 20 seconds" data-de="Befolgen Sie die 20-20-20-Regel: Alle 20 Minuten 20 Sekunden auf etwas in 20 Fuß Entfernung schauen" data-it="Segui la regola 20-20-20: Ogni 20 minuti, guarda qualcosa a 20 piedi di distanza per 20 secondi" data-fr="Suivez la règle 20-20-20: Toutes les 20 minutes, regardez quelque chose à 20 pieds de distance pendant 20 secondes"></li>
-                    <li data-en="Wear UV-protective sunglasses outdoors" data-de="Tragen Sie im Freien UV-schützende Sonnenbrillen" data-it="Indossa occhiali da sole con protezione UV all'aperto" data-fr="Portez des lunettes de soleil anti-UV à l'extérieur"></li>
-                    <li data-en="Maintain a diet rich in leafy greens and omega-3 fatty acids" data-de="Halten Sie eine Ernährung mit viel Blattgemüse und Omega-3-Fettsäuren ein" data-it="Mantieni una dieta ricca di verdure a foglia verde e acidi grassi omega-3" data-fr="Maintenez une alimentation riche en légumes verts et en acides gras oméga-3"></li>
-                    <li data-en="Avoid smoking to reduce risk of eye diseases" data-de="Vermeiden Sie Rauchen, um das Risiko von Augenkrankheiten zu reduzieren" data-it="Evita di fumare per ridurre il rischio di malattie degli occhi" data-fr="Évitez de fumer pour réduire le risque de maladies oculaires"></li>
-                </ul>
-                <div class="reference" data-en="Based on recommendations from the American Academy of Ophthalmology and National Eye Institute" data-de="Basierend auf Empfehlungen der American Academy of Ophthalmology und des National Eye Institute" data-it="Basato sulle raccomandazioni dell'American Academy of Ophthalmology e del National Eye Institute" data-fr="Basé sur les recommandations de l'American Academy of Ophthalmology et du National Eye Institute"></div>
-            </div>
-
-            <hr>
+    <footer>
+        <div class="footer-content">
             <div class="support-message">
-                If you find it helpful and want to support it, you can<br>
-                <a href="https://www.buymeacoffee.com/atlassa" target="_blank">buy me a coffee ☕</a><br><br>
+                <p>If you find this tool helpful, you can <a href="https://www.buymeacoffee.com/atlassa" target="_blank" rel="noopener nofollow">buy me a coffee ☕</a> to support its development.</p>
             </div>
-            <button class="close-popup-button" id="close-info-popup-button" data-en="Close" data-de="Schließen" data-it="Chiudi" data-fr="Fermer">Schließen</button>
+            <p><strong>Disclaimer:</strong> This website provides general information and an online screening tool. It is not a substitute for a professional medical diagnosis. Always consult an ophthalmologist or optometrist for any vision concerns.</p>
+            <p>&copy; 2024 Strabismus-Test.ch | <a href="privacy.html">Privacy Policy</a></p>
         </div>
-    </div>
+    </footer>
 
-    <button class="reset-button" id="reset-button" data-en="Reset" data-de="Zurücksetzen" data-it="Reimposta" data-fr="Réinitialiser">Zurücksetzen</button>
-    <button class="open-popup-button" id="open-popup-button" data-en="Open Settings" data-de="Einstellungen öffnen" data-it="Apri Impostazioni" data-fr="Ouvrir les paramètres">Einstellungen öffnen</button>
-    <button class="open-info-button" id="open-info-button" data-en="Info" data-de="Info" data-it="Informazioni" data-fr="Info">Info</button>
-    <div class="cross upper-left"></div>
-    <div class="cross upper-center"></div>
-    <div class="cross upper-right"></div>
-    <div class="cross lower-left"></div>
-    <div class="cross lower-center"></div>
-    <div class="cross lower-right"></div>
-    <div class="cursor-dot" id="cursor-dot"></div>
-
-    <script>
-        let allowDotPlacement = true;
-    
-        function moveCursorDot(e) {
-            const cursorDot = document.getElementById('cursor-dot');
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-        }
-    
-        function placeGreenDot(e) {
-            if (document.getElementById('popup').style.display === 'none' && document.getElementById('info-popup').style.display === 'none' && allowDotPlacement) {
-                const newDot = document.createElement('div');
-                newDot.style.position = 'absolute';
-                newDot.style.width = '10px';
-                newDot.style.height = '10px';
-                newDot.style.backgroundColor = document.getElementById('right-eye-color').value;
-                newDot.style.borderRadius = '50%';
-                newDot.style.left = e.clientX + 'px';
-                newDot.style.top = e.clientY + 'px';
-                newDot.style.transform = 'translate(-50%, -50%)';
-                newDot.style.zIndex = '5'; /* Ensure new dots are below the crosses */
-                document.body.appendChild(newDot);
-            }
-        }
-    
-        function updateCrossColors() {
-            const leftEyeColor = document.getElementById('left-eye-color').value;
-            const styleElement = document.createElement('style');
-            styleElement.innerHTML = 
-                `.cross:before, .cross:after {
-                    background-color: ${leftEyeColor};
-                }`;
-            document.head.appendChild(styleElement);
-        }
-    
-        document.addEventListener('mousemove', moveCursorDot);
-        document.addEventListener('click', placeGreenDot);
-    
-        document.getElementById('reset-button').addEventListener('click', function() {
-            const dots = document.querySelectorAll('body > div:not(.cross):not(#cursor-dot):not(.popup)');
-            dots.forEach(dot => dot.remove());
-        });
-    
-        document.getElementById('close-popup-button').addEventListener('click', function() {
-            allowDotPlacement = false;
-            document.getElementById('popup').style.display = 'none';
-            updateCrossColors();
-            document.getElementById('cursor-dot').style.backgroundColor = document.getElementById('right-eye-color').value;
-            document.getElementById('reset-button').click();
-            document.body.style.cursor = 'none'; // Hide cursor after closing popup
-            setTimeout(() => {
-                allowDotPlacement = true;
-            }, 100);
-        });
-    
-        document.getElementById('open-popup-button').addEventListener('click', function() {
-            allowDotPlacement = false;
-            document.getElementById('popup').style.display = 'flex';
-            document.body.style.cursor = 'default'; // Show cursor when popup is open
-        });
-    
-        document.getElementById('open-info-button').addEventListener('click', function() {
-            allowDotPlacement = false;
-            document.getElementById('info-popup').style.display = 'flex';
-            document.body.style.cursor = 'default'; // Show cursor when popup is open
-        });
-    
-        function closeInfoPopup() {
-            allowDotPlacement = false;
-            document.getElementById('info-popup').style.display = 'none';
-            document.body.style.cursor = 'none'; // Hide cursor after closing popup
-            setTimeout(() => {
-                allowDotPlacement = true;
-            }, 100);
-        }
-    
-        document.getElementById('close-info-popup-button').addEventListener('click', closeInfoPopup);
-    
-        document.getElementById('en-button').addEventListener('click', function() {
-            switchLanguage('en');
-        });
-    
-        document.getElementById('de-button').addEventListener('click', function() {
-            switchLanguage('de');
-        });
-    
-        document.getElementById('it-button').addEventListener('click', function() {
-            switchLanguage('it');
-        });
-    
-        document.getElementById('fr-button').addEventListener('click', function() {
-            switchLanguage('fr');
-        });
-    
-        function switchLanguage(language) {
-            document.querySelectorAll('[data-en]').forEach(element => {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = element.getAttribute(`data-${language}`);
-                } else {
-                    element.innerHTML = element.getAttribute(`data-${language}`) || element.textContent;
-                }
-            });
-        }
-    
-        // Set default language to German
-        switchLanguage('de');
-    </script>
-    
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Strabismus Test</title>
+    <meta name="description" content="Use our free online strabismus test to detect potential eye misalignment. Quick, easy, and medically informed – ideal for all ages.">
+    <meta name="keywords" content="strabismus test, eye alignment test, lazy eye test, online eye test, eye misalignment check, squint test">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9394843071535758" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body class="test-body">
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Strabismus-Test.ch</a>
+            <nav class="nav-main">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Strabismus</a>
+                <a href="treatment.html">Treatment</a>
+                <a href="test.html">Online Test</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- This is your interactive test area -->
+    <div id="test-container">
+        <div class="cross upper-left"></div>
+        <div class="cross upper-center"></div>
+        <div class="cross upper-right"></div>
+        <div class="cross lower-left"></div>
+        <div class="cross lower-center"></div>
+        <div class="cross lower-right"></div>
+        <div class="cursor-dot" id="cursor-dot"></div>
+        
+        <div class="test-controls">
+             <button class="test-button" id="open-info-button" data-en="Info" data-de="Info" data-it="Informazioni" data-fr="Info">Info</button>
+            <button class="test-button" id="open-popup-button" data-en="Settings" data-de="Einstellungen" data-it="Impostazioni" data-fr="Paramètres">Einstellungen</button>
+            <button class="test-button" id="reset-button" data-en="Reset" data-de="Zurücksetzen" data-it="Reimposta" data-fr="Réinitialiser">Zurücksetzen</button>
+        </div>
+    </div>
+    
+    <!-- Popups for settings and info -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+             <div class="language-buttons">
+                <button id="en-button">English</button>
+                <button id="de-button">Deutsch</button>
+                <button id="it-button">Italiano</button>
+                <button id="fr-button">Français</button>
+            </div>
+            <div class="title" data-en="Test Settings" data-de="Test-Einstellungen" data-it="Impostazioni Test" data-fr="Paramètres du Test">Test-Einstellungen</div>
+            <p data-en="To conduct the test, you'll need glasses with two different colors (e.g., red/cyan 3D glasses)." data-de="Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. eine 3D-Brille." data-it="Per eseguire il test, avrai bisogno di occhiali con due colori diversi, come gli occhiali 3D." data-fr="Pour réaliser le test, vous aurez besoin de lunettes avec deux couleurs différentes, comme des lunettes 3D.">Um den Test durchzuführen, benötigen Sie eine Brille mit zwei verschiedenen Farben, wie z.B. eine 3D-Brille.</p>
+            <img src="glasses_image.png" alt="3D Glasses" class="glasses-image">
+            <p data-en="Adjust the colors below so that the red cross is invisible to the eye with the cyan lens, and the cyan dot is invisible to the eye with the red lens." data-de="Passen Sie die Farben unten an, sodass das rote Kreuz für das Auge mit der Cyan-Linse unsichtbar ist und der Cyan-Punkt für das Auge mit der roten Linse unsichtbar ist." data-it="Regola i colori sotto in modo che la croce rossa sia invisibile all'occhio con la lente ciano e il punto ciano sia invisibile all'occhio con la lente rossa." data-fr="Ajustez les couleurs ci-dessous pour que la croix rouge soit invisible pour l'œil avec la lentille cyan, et le point cyan soit invisible pour l'œil avec la lentille rouge.">Passen Sie die Farben unten an.</p>
+            <div class="color-input-container">
+                <div class="color-input">
+                    <label for="left-eye-color" data-en="Cross Color (for Red Lens): " data-de="Kreuzfarbe (für rote Linse): " data-it="Colore Croce (per lente rossa): " data-fr="Couleur Croix (pour lentille rouge): ">Kreuzfarbe (für rote Linse): </label>
+                    <input type="color" id="left-eye-color" value="#ff0000">
+                </div>
+                <div class="color-input">
+                    <label for="right-eye-color" data-en="Dot Color (for Cyan Lens): " data-de="Punktfarbe (für Cyan-Linse): " data-it="Colore Punto (per lente ciano): " data-fr="Couleur Point (pour lentille cyan): ">Punktfarbe (für Cyan-Linse): </label>
+                    <input type="color" id="right-eye-color" value="#00FFFF">
+                </div>
+            </div>
+            <button class="popup-button" id="close-popup-button" data-en="Apply and Start" data-de="Anwenden und Starten" data-it="Applica e Inizia" data-fr="Appliquer et Démarrer">Anwenden und Starten</button>
+        </div>
+    </div>
+
+    <div class="popup" id="info-popup" style="display:none;">
+        <div class="popup-content">
+            <div class="title" data-en="How to Use the Test" data-de="Anleitung zum Test" data-it="Come usare il test" data-fr="Comment utiliser le test">Anleitung zum Test</div>
+            <div class="info-section">
+                <ol>
+                    <li data-en="Put on your red/cyan glasses." data-de="Setzen Sie Ihre Rot/Cyan-Brille auf." data-it="Indossa i tuoi occhiali rosso/ciano." data-fr="Mettez vos lunettes rouge/cyan.">Setzen Sie Ihre Rot/Cyan-Brille auf.</li>
+                    <li data-en="Position yourself about 30-50 cm (1-1.5 feet) from the screen." data-de="Positionieren Sie sich etwa 30-50 cm vom Bildschirm entfernt." data-it="Posizionati a circa 30-50 cm dallo schermo." data-fr="Placez-vous à environ 30-50 cm de l'écran.">Positionieren Sie sich etwa 30-50 cm vom Bildschirm entfernt.</li>
+                    <li data-en="Keep your head still and use your mouse to move the colored dot." data-de="Halten Sie Ihren Kopf still und bewegen Sie den farbigen Punkt mit der Maus." data-it="Tieni la testa ferma e usa il mouse per muovere il punto colorato." data-fr="Gardez la tête immobile et utilisez votre souris pour déplacer le point coloré.">Halten Sie Ihren Kopf still und bewegen Sie den farbigen Punkt mit der Maus.</li>
+                    <li data-en="Click directly on the center of each of the six red crosses." data-de="Klicken Sie direkt auf die Mitte jedes der sechs roten Kreuze." data-it="Clicca direttamente al centro di ognuna delle sei croci rosse." data-fr="Cliquez directement sur le centre de chacune des six croix rouges.">Klicken Sie direkt auf die Mitte jedes der sechs roten Kreuze.</li>
+                    <li data-en="After clicking all six, take off your glasses to see the result." data-de="Nachdem Sie auf alle sechs geklickt haben, nehmen Sie die Brille ab, um das Ergebnis zu sehen." data-it="Dopo aver cliccato su tutte e sei, togli gli occhiali per vedere il risultato." data-fr="Après avoir cliqué sur les six, enlevez vos lunettes pour voir le résultat.">Nachdem Sie auf alle sechs geklickt haben, nehmen Sie die Brille ab.</li>
+                </ol>
+            </div>
+             <div class="disclaimer">
+                <h3 data-en="Interpreting Results" data-de="Ergebnisse interpretieren" data-it="Interpretare i risultati" data-fr="Interpréter les résultats">Ergebnisse interpretieren</h3>
+                <p data-en="<strong>Normal:</strong> The dots you placed are perfectly centered on the red crosses. <br><strong>Potential Issue:</strong> If the dots are consistently off-center in the same direction, it may indicate a misalignment. Please consult a professional." data-de="<strong>Normal:</strong> Die von Ihnen platzierten Punkte sind perfekt auf den roten Kreuzen zentriert.<br><strong>Mögliches Problem:</strong> Wenn die Punkte konstant in dieselbe Richtung verschoben sind, könnte dies auf eine Fehlstellung hinweisen. Bitte konsultieren Sie einen Fachmann." data-it="<strong>Normale:</strong> I punti che hai posizionato sono perfettamente centrati sulle croci rosse.<br><strong>Potenziale problema:</strong> Se i punti sono costantemente decentrati nella stessa direzione, potrebbe indicare un disallineamento. Si prega di consultare un professionista." data-fr="<strong>Normal :</strong> Les points que vous avez placés sont parfaitement centrés sur les croix rouges.<br><strong>Problème potentiel :</strong> Si les points sont constamment décentrés dans la même direction, cela peut indiquer un désalignement. Veuillez consulter un professionnel."></p>
+             </div>
+            <button class="popup-button" id="close-info-popup-button" data-en="Close" data-de="Schließen" data-it="Chiudi" data-fr="Fermer">Schließen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
